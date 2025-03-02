@@ -1,4 +1,4 @@
-name: ${{ github.event.inputs.tag }}
+name: testing
 
 on:
   workflow_dispatch:
