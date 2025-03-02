@@ -1,0 +1,23 @@
+plugins {
+    id 'java'
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'io.cucumber:cucumber-java:7.21.1'
+    // https://mvnrepository.com/artifact/io.cucumber/cucumber-testng
+    implementation 'io.cucumber:cucumber-testng:7.21.1'
+
+    // https://mvnrepository.com/artifact/org.testng/testng
+    implementation 'org.testng:testng:7.7.0'
+}
+
+test {
+    useTestNG()
+}
