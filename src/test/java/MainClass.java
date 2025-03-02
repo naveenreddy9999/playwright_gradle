@@ -6,6 +6,7 @@ public class MainClass {
    @Test
     public void testing()
     {
+       /// System.setProperty("cucumber.filter.tags","@login2");
         System.out.println("Execution");
         // Create TestNG instance
         TestNG testNG = new TestNG();
