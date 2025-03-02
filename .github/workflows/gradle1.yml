@@ -57,6 +57,9 @@ jobs:
     # See: https://github.com/gradle/actions/blob/main/dependency-submission/README.md
     - name: Generate and submit dependency graph
       uses: gradle/actions/dependency-submission@af1da67850ed9a4cedd57bfd976089dd991e2582 # v4.0.0
-
+      
+    - name: Grant execute permissions to gradlew
+      run: chmod +x ./gradlew  # Ensure gradlew has execute permissions
+      
     - name: Run tests with Gradle
       run: ./gradlew clean test --no-daemon --stacktrace --debug --info
