@@ -1,6 +1,12 @@
 name: CI
 
 on:
+  workflow_dispatch:
+    inputs:
+      browser:
+        description: 'Add Tag name'
+        required: true
+        default: '@login'
   push:
     branches:
       - main  # Trigger this workflow on push to the main branch
