@@ -38,4 +38,4 @@ jobs:
 
     # Step 4: Run Gradle build
     - name: Run Gradle build
-      run: ./gradlew clean test -D"tag=${{ github.event.inputs.tag }}"
+      run: ./gradlew clean test -P"tag=${{ github.event.inputs.tag }}"
