@@ -28,7 +28,7 @@ jobs:
 
     # Step 3: Install Gradle (using the wrapper)
     - name: Install Gradle
-      uses: gradle/wrapper-validation-action@v1
+      uses: gradle/actions/wrapper-validation@v3
 
 
     # Step 4: Run tests with Gradle
