@@ -12,6 +12,6 @@ public class StepDefinition {
 
     @When("log in {string}")
     public void logIn(String arg0) {
-        System.out.println(arg0);
+        System.out.println("hello +"+arg0);
     }
 }
