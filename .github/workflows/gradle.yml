@@ -26,13 +26,14 @@ jobs:
         java-package: jdk
         architecture: x64
 
-    # Step 3: Install Gradle (using the wrapper)
+    # Step 3: Grant execute permission to gradlew
+    - name: Grant execute permissions to gradlew
+      run: chmod +x ./gradlew  # Ensure gradlew has execute permissions
+
+    # Step 4: Install Gradle (using the wrapper)
     - name: Install Gradle
       uses: gradle/actions/wrapper-validation@v3
 
-
-    # Step 4: Run tests with Gradle
+    # Step 5: Run tests with Gradle
     - name: Run tests with Gradle
       run: ./gradlew clean test  # Running Gradle clean and test tasks
-
-  
