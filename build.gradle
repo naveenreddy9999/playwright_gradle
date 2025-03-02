@@ -9,7 +9,7 @@ repositories {
 dependencies {
     implementation 'io.cucumber:cucumber-java:7.21.1'
     testImplementation 'io.cucumber:cucumber-testng:7.21.1'
-    testImplementation 'org.testng:testng:7.7.0'
+    testImplementation 'org.testng:testng:7.11.0'
 }
 
 test {
