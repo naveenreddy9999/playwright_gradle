@@ -30,6 +30,7 @@ jobs:
     - name: Install Gradle
       uses: gradle/wrapper-validation-action@v1
 
+
     # Step 4: Run tests with Gradle
     - name: Run tests with Gradle
       run: ./gradlew clean test  # Running Gradle clean and test tasks
