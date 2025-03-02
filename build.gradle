@@ -8,19 +8,14 @@ repositories {
 
 dependencies {
     implementation 'io.cucumber:cucumber-java:7.21.1'
-    // https://mvnrepository.com/artifact/io.cucumber/cucumber-testng
-    implementation 'io.cucumber:cucumber-testng:7.21.1'
-
-    // https://mvnrepository.com/artifact/org.testng/testng
-    implementation 'org.testng:testng:7.7.0'
+    testImplementation 'io.cucumber:cucumber-testng:7.21.1'
+    testImplementation 'org.testng:testng:7.7.0'
 }
 
 test {
     useTestNG()
-
     testLogging {
         events "passed", "failed", "skipped"
         showStandardStreams = true
     }
 }
-

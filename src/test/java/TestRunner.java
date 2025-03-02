@@ -10,6 +10,5 @@ import org.testng.annotations.Test;
         tags = "@login"
 )
 
-
 public class TestRunner extends AbstractTestNGCucumberTests {
 }
