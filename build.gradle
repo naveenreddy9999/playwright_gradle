@@ -13,12 +13,13 @@ dependencies {
 }
 
 test {
-    systemProperty 'cucumber.filter.tags', '@login'
+    def tag = project.hasProperty('cucumber.filter.tags') ? project.'cucumber.filter.tags' : '@login'
+
+    systemProperty 'cucumber.filter.tags', tag
     useTestNG()
 
     testLogging {
         events "passed", "failed", "skipped"
         showStandardStreams = true
-
     }
 }
