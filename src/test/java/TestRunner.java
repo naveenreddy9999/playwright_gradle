@@ -7,7 +7,7 @@ import org.testng.annotations.Test;
         glue = {"classpath:stepDef"},
         dryRun = false,
         monochrome = true,
-        plugin = {"pretty"}
+        plugin = {"pretty"},tags = "@login"
 )
 
 public class TestRunner extends AbstractTestNGCucumberTests {
