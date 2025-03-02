@@ -13,9 +13,12 @@ dependencies {
 }
 
 test {
+    systemProperty 'cucumber.filter.tags', '@login'
     useTestNG()
+
     testLogging {
         events "passed", "failed", "skipped"
         showStandardStreams = true
+
     }
 }

@@ -3,7 +3,7 @@ name: CI
 on:
   workflow_dispatch:
     inputs:
-      browser:
+      tag:
         description: 'Add Tag name'
         required: true
         default: '@login'
@@ -38,4 +38,4 @@ jobs:
 
     # Step 4: Run Gradle build
     - name: Run Gradle build
-      run: ./gradlew clean test
+      run: ./gradlew clean test -D"tag=${{ github.event.inputs.tag }}
