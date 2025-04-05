@@ -32,6 +32,9 @@ RUN npm install -g playwright
 # Install Playwright browsers (Chromium, Firefox, and WebKit)
 RUN npx playwright install --with-deps
 
+# Set the environment variable to specify the browser installation location
+ENV PLAYWRIGHT_BROWSERS_PATH=/usr/src/app/.cache/ms-playwright
+
 # Set the working directory inside the container
 WORKDIR /usr/src/app
 
