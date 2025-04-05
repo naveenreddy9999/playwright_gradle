@@ -32,10 +32,23 @@ jobs:
         java-package: jdk
         architecture: x64
 
-    # Step 3: Grant execute permissions to gradlew (in case it's missing)
-    - name: Grant execute permissions to gradlew
-      run: chmod +x ./gradlew  # Ensure gradlew has execute permissions
+    # Step 3: Set up Docker Buildx (needed for multi-platform support)
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v1
 
-    # Step 4: Run Gradle build
-    - name: Run Gradle build
-      run: ./gradlew clean test -P"cucumber.filter.tags=${{ github.event.inputs.tag }}"
+    # Step 4: Build the Docker image with Playwright and Java setup
+    - name: Build Docker image
+      run: |
+        docker build -t playwright-java-app .
+
+    # Step 5: Run the Docker container to execute the tests
+    - name: Run tests inside Docker container
+      run: |
+        docker run --rm playwright-java-app ./gradlew clean test -P"cucumber.filter.tags=${{ github.event.inputs.tag }}"
+
+    # Optional: Upload screenshot artifacts (if needed)
+    - name: Upload screenshot artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: screenshots
+        path: screenshots/
