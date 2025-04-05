@@ -1,12 +1,12 @@
 Feature: login
 
-  @login
+  @login_mvn
   Scenario: user login
     Given User navigating to the login page
     When log in "log"
 
 
-  @login1
+  @login
   Scenario: user login1
     Given User navigating to the login page
     When log in "log one"
