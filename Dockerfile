@@ -1,7 +1,7 @@
 # Use OpenJDK as the base image
 FROM openjdk:17-slim
 
-# Install dependencies (wget, curl, unzip, Node.js, and libraries needed for Playwright browsers)
+# Install dependencies for Playwright and the browser
 RUN apt-get update && apt-get install -y \
     wget \
     curl \
@@ -26,10 +26,13 @@ RUN apt-get update && apt-get install -y \
     && apt-get install -y nodejs \
     && rm -rf /var/lib/apt/lists/*
 
+# Install Chromium directly from the official repository
+RUN apt-get update && apt-get install -y chromium
+
 # Install Playwright and its dependencies
 RUN npm install -g playwright
 
-# Install Playwright browsers (Chromium, Firefox, and WebKit)
+# Force install of Playwright browsers (Chromium, WebKit, and Firefox)
 RUN npx playwright install --with-deps
 
 # Set the environment variable to specify the browser installation location
