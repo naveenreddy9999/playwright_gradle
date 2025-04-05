@@ -1,54 +1,54 @@
-name: testing
+# name: testing
 
-on:
-  workflow_dispatch:
-    inputs:
-      tag:
-        description: 'Add Tag name'
-        required: true
-        default: '@login'
-  push:
-    branches:
-      - main  # Trigger this workflow on push to the main branch
-  pull_request:
-    branches:
-      - main  # Trigger this workflow on pull request targeting the main branch
+# on:
+#   workflow_dispatch:
+#     inputs:
+#       tag:
+#         description: 'Add Tag name'
+#         required: true
+#         default: '@login'
+#   push:
+#     branches:
+#       - main  # Trigger this workflow on push to the main branch
+#   pull_request:
+#     branches:
+#       - main  # Trigger this workflow on pull request targeting the main branch
 
-jobs:
-  build:
-    runs-on: ubuntu-latest  # The runner will use the latest Ubuntu image
+# jobs:
+#   build:
+#     runs-on: ubuntu-latest  # The runner will use the latest Ubuntu image
 
-    steps:
-    # Step 1: Checkout the code
-    - name: Checkout code
-      uses: actions/checkout@v2
+#     steps:
+#     # Step 1: Checkout the code
+#     - name: Checkout code
+#       uses: actions/checkout@v2
 
-    # Step 2: Set up JDK using Eclipse Temurin
-    - name: Set up JDK 17
-      uses: actions/setup-java@v2
-      with:
-        java-version: '17'  # Specify the Java version you need
-        distribution: 'temurin'  # Use 'temurin' (Eclipse Temurin, previously AdoptOpenJDK)
-        java-package: jdk
-        architecture: x64
+#     # Step 2: Set up JDK using Eclipse Temurin
+#     - name: Set up JDK 17
+#       uses: actions/setup-java@v2
+#       with:
+#         java-version: '17'  # Specify the Java version you need
+#         distribution: 'temurin'  # Use 'temurin' (Eclipse Temurin, previously AdoptOpenJDK)
+#         java-package: jdk
+#         architecture: x64
 
-    # Step 3: Set up Docker Buildx (needed for multi-platform support)
-    - name: Set up Docker Buildx
-      uses: docker/setup-buildx-action@v1
+#     # Step 3: Set up Docker Buildx (needed for multi-platform support)
+#     - name: Set up Docker Buildx
+#       uses: docker/setup-buildx-action@v1
 
-    # Step 4: Build the Docker image with Playwright and Java setup
-    - name: Build Docker image
-      run: |
-        docker build -t playwright-java-app .
+#     # Step 4: Build the Docker image with Playwright and Java setup
+#     - name: Build Docker image
+#       run: |
+#         docker build -t playwright-java-app .
 
-    # Step 5: Run the Docker container to execute the tests
-    - name: Run tests inside Docker container
-      run: |
-        docker run --rm playwright-java-app ./gradlew clean test -P"cucumber.filter.tags=${{ github.event.inputs.tag }}"
+#     # Step 5: Run the Docker container to execute the tests
+#     - name: Run tests inside Docker container
+#       run: |
+#         docker run --rm playwright-java-app ./gradlew clean test -P"cucumber.filter.tags=${{ github.event.inputs.tag }}"
 
-    # Optional: Upload screenshot artifacts (if needed)
-  #  - name: Upload screenshot artifact
-   #   uses: actions/upload-artifact@v2
-   #   with:
-   #     name: screenshots
-   #     path: screenshots/
+#     # Optional: Upload screenshot artifacts (if needed)
+#   #  - name: Upload screenshot artifact
+#    #   uses: actions/upload-artifact@v2
+#    #   with:
+#    #     name: screenshots
+#    #     path: screenshots/
