@@ -13,6 +13,7 @@ public class StepDefinition {
         BrowserContext browserContext = browser.newContext();
         Page page = browserContext.newPage();
         page.navigate("https://mvnrepository.com/artifact/com.microsoft.playwright/playwright/1.51.0",new Page.NavigateOptions().setTimeout(50000));
+        System.out.println("title :: "+page.title());
     }
 
     @When("log in {string}")
