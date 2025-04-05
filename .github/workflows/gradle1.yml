@@ -47,8 +47,8 @@ jobs:
         docker run --rm playwright-java-app ./gradlew clean test -P"cucumber.filter.tags=${{ github.event.inputs.tag }}"
 
     # Optional: Upload screenshot artifacts (if needed)
-    - name: Upload screenshot artifact
-      uses: actions/upload-artifact@v2
-      with:
-        name: screenshots
-        path: screenshots/
+  #  - name: Upload screenshot artifact
+   #   uses: actions/upload-artifact@v2
+   #   with:
+   #     name: screenshots
+   #     path: screenshots/
