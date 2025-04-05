@@ -24,8 +24,10 @@ RUN apt-get update && apt-get install -y \
     --no-install-recommends \
     && rm -rf /var/lib/apt/lists/*
 
-# Install Gradle (Optional, if you're using it)
-RUN apt-get install -y gradle
+# Install Gradle (via the official method)
+RUN wget https://services.gradle.org/distributions/gradle-8.13-bin.zip -P /tmp && \
+    unzip -d /opt/gradle /tmp/gradle-7.6-bin.zip && \
+    ln -s /opt/gradle/gradle-8.13/bin/gradle /usr/bin/gradle
 
 # Install Playwright
 RUN npm install -g playwright
