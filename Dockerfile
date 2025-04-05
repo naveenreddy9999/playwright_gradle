@@ -1,19 +1,35 @@
 # Use OpenJDK as the base image
 FROM openjdk:17-slim
 
-# Install dependencies (wget, curl, unzip, Node.js, and required libraries)
+# Install dependencies (wget, curl, unzip, Node.js, and required libraries for browsers)
 RUN apt-get update && apt-get install -y \
     wget \
     curl \
     unzip \
     ca-certificates \
     libfontconfig1 \
+    libx11-xcb1 \
+    libgbm1 \
+    libnss3 \
+    libatk-bridge2.0-0 \
+    libatk1.0-0 \
+    libcups2 \
+    libdbus-1-3 \
+    libgdk-pixbuf2.0-0 \
+    libnspr4 \
+    libnss3 \
+    libx11-xcb1 \
+    xdg-utils \
+    --no-install-recommends \
     && curl -fsSL https://deb.nodesource.com/setup_18.x | bash - \
     && apt-get install -y nodejs \
     && rm -rf /var/lib/apt/lists/*
 
 # Install Playwright
 RUN npm install -g playwright
+
+# Install Playwright browsers (this will download and install Chromium, Firefox, and WebKit)
+RUN npx playwright install --with-deps
 
 # Install Gradle
 RUN wget https://services.gradle.org/distributions/gradle-8.13-bin.zip -P /tmp && \
