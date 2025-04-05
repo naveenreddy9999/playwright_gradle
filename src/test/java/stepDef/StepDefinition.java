@@ -12,7 +12,8 @@ public class StepDefinition {
     @Given("User navigating to the login page")
     public void user_navigating_to_the_login_page() throws InterruptedException {
         Playwright playwright = Playwright.create();
-        Browser browser = playwright.chromium().launch(new BrowserType.LaunchOptions().setChannel("chrome").setHeadless(false));
+      //  Browser browser = playwright.chromium().launch(new BrowserType.LaunchOptions().setChannel("chrome").setHeadless(false));
+        Browser browser = playwright.chromium().connect("ws://0.0.0.0:3000/");
         BrowserContext browserContext = browser.newContext();
         Page page = browserContext.newPage();
         page.navigate("https://mvnrepository.com/artifact/com.microsoft.playwright/playwright/1.51.0",new Page.NavigateOptions().setTimeout(50000));

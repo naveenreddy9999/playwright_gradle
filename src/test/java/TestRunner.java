@@ -6,7 +6,7 @@ import io.cucumber.testng.CucumberOptions;
         glue = {"classpath:stepDef"},
         dryRun = false,
         monochrome = true,
-        plugin = {"pretty"},tags = "@login"
+        plugin = {"pretty"},tags = "@login_mvn"
 )
 
 public class TestRunner extends AbstractTestNGCucumberTests {
