@@ -1,9 +1,10 @@
 # Use OpenJDK as the base image
 FROM openjdk:17-slim
 
-# Install dependencies for Playwright (Chromium)
+# Install dependencies for wget and unzip
 RUN apt-get update && apt-get install -y \
     wget \
+    unzip \
     ca-certificates \
     fonts-liberation \
     libappindicator3-1 \
@@ -24,9 +25,9 @@ RUN apt-get update && apt-get install -y \
     --no-install-recommends \
     && rm -rf /var/lib/apt/lists/*
 
-# Install Gradle (via the official method)
+# Install Gradle (the version should match the one you download)
 RUN wget https://services.gradle.org/distributions/gradle-8.13-bin.zip -P /tmp && \
-    unzip -d /opt/gradle /tmp/gradle-7.6-bin.zip && \
+    unzip -d /opt/gradle /tmp/gradle-8.13-bin.zip && \
     ln -s /opt/gradle/gradle-8.13/bin/gradle /usr/bin/gradle
 
 # Install Playwright
