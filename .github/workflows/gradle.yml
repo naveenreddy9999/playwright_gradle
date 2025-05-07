@@ -3,10 +3,10 @@ name: CI
 on:
   push:
     branches:
-      - main  # Trigger this workflow on push to the main branch
+      - naveen  # Trigger this workflow on push to the main branch
   pull_request:
     branches:
-      - main  # Trigger this workflow on pull request targeting the main branch
+      - naveen  # Trigger this workflow on pull request targeting the main branch
 
 jobs:
   build:
