@@ -9,10 +9,10 @@ on:
         default: '@login'
   push:
     branches:
-      - naveen  # Trigger this workflow on push to the main branch
+      - naveenreddy9999-patch-1  # Trigger this workflow on push to the main branch
   pull_request:
     branches:
-      - naveen  # Trigger this workflow on pull request targeting the main branch
+      - naveenreddy9999-patch-1  # Trigger this workflow on pull request targeting the main branch
 
 jobs:
   build:
